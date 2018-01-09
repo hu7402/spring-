@@ -18,6 +18,6 @@ public class UserTest {
 	
 	@Test
 	public void test1(){
-		uservice.save();
+		uservice.delete();
 	}
 }

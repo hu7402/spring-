@@ -1,19 +1,27 @@
 package com.hz.maven.test;
 
 import org.junit.Test;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.mchange.v2.c3p0.ComboPooledDataSource;
+import com.hz.maven.dao.IRoleDao;
+import com.hz.maven.pojo.po.Role;
+import com.hz.maven.service.IUservice;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration({"classpath:spring-jdbc-test.xml"})
 public class JdbcTemplateTest {
+	@Autowired
+	public IRoleDao idao;
+	
 	@Test
-	public void test1()throws Throwable{
-		ComboPooledDataSource dataSource=new ComboPooledDataSource();
-		dataSource.setDriverClass("com.mysql.jdbc.Driver");
-        dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/day01");
-        dataSource.setUser("root");
-        dataSource.setPassword("123");
-        JdbcTemplate  jdbc=new JdbcTemplate(dataSource);
-        jdbc.update("insert into role values(?,?,?)", 3,"胡壮","男");
+	public void test1(){
+		/*uservice.save();*/
+		Role role=new Role(5,"李勇","男");
+		idao.save(role);
 	}
 }

@@ -2,13 +2,13 @@ package com.hz.maven.service.impl;
 
 import com.hz.maven.service.IUservice;
 
-public class UserServiceImpl implements IUservice {
+public abstract class UserServiceImpl implements IUservice {
 
-	@Override
-	public void save() {
+	/*@Override
+	public int save() {
 		System.out.println("----------用户已保存----------");
 
-	}
+	}*/
 
 	@Override
 	public void delete() {
